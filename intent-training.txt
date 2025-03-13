@@ -1,0 +1,84 @@
+# Eat command variations
+eat_command    Time to eat
+eat_command    Have some food
+eat_command    Eat your meal
+eat_command    Dinner is ready
+eat_command    It's time for food
+eat_command    Come and eat
+eat_command    Your food is served
+eat_command    Your bowl is full, go eat
+eat_command    Mmm, fresh food for you
+eat_command    Don't be shy, eat up!
+eat_command    Time for your tasty meal
+eat_command    Go enjoy your delicious food
+eat_command    Eat before it gets cold
+eat_command    Your favorite treat is waiting!
+eat_command    You must be hungry, go eat
+eat_command    Take a bite, kitty!
+eat_command    It’s snack time!
+eat_command    Have some yummy food
+eat_command    Here's your meal, enjoy!
+eat_command    Eat up, little one!
+# Sleep command variations
+sleep_command    Go to sleep
+sleep_command    Take a nap
+sleep_command    Rest for a while
+sleep_command    Sleep now
+sleep_command    Close your eyes and sleep
+sleep_command    Time for a catnap
+sleep_command    You look sleepy
+sleep_command    Find a cozy spot and sleep
+sleep_command    Time to rest those paws
+sleep_command    Snuggle up and get some sleep
+sleep_command    Get some rest, my little feline
+sleep_command    Curl up and nap
+sleep_command    The sun is warm, take a nap
+sleep_command    It's bedtime, go sleep
+sleep_command    Sleep tight, kitty
+sleep_command    Lay down and relax
+sleep_command    Get comfortable and sleep
+sleep_command    The world can wait, go sleep
+sleep_command    Rest up, you'll need energy later!
+sleep_command    Stretch and snooze, little one
+# Play command variations
+play_command    Let's play
+play_command    Want to play?
+play_command    Get your toy
+play_command    Time to have fun
+play_command    Play with me
+play_command    Chase the ball
+play_command    Run around
+play_command    It's playtime, kitty!
+play_command    Catch this string!
+play_command    Pounce on it, go!
+play_command    Show me your hunting skills
+play_command    Swipe at the feather toy!
+play_command    Go wild, have fun!
+play_command    Jump and chase!
+play_command    The laser dot is waiting!
+play_command    Let's see how fast you are!
+play_command    Come play with your toy mouse
+play_command    Catch the moving toy!
+play_command    Time to practice your hunting moves
+play_command    Bat at this ball, kitty!
+# Sit command variations
+sit_command    Sit down
+sit_command    Stay here
+sit_command    Sit still
+sit_command    Stop moving and sit
+sit_command    Be a good kitty and sit
+sit_command    Take a seat
+sit_command    Relax and sit
+sit_command    Just sit and watch
+sit_command    Pause and sit for a bit
+sit_command    Rest your legs, sit down
+sit_command    Sit and wait for your treat
+sit_command    Don't move, just sit
+sit_command    Stay put, little one
+sit_command    Find a comfy spot and sit
+sit_command    Watch me while you sit
+sit_command    Sit and observe the world
+sit_command    Sit patiently, good kitty!
+sit_command    You can sit next to me
+sit_command    No need to run, just sit
+sit_command    Sit tight, something fun is coming!
