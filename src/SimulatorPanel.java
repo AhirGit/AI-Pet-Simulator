@@ -135,9 +135,29 @@ public class SimulatorPanel extends JPanel{
         }, durationInSeconds * 1000);
     }
 
+    // Method to set status of the cat
+    public void updateStatus(String text, int durationInSeconds) {
+        this.thoughtText = text;
+        repaint(); // Redraw to show text
+
+        // Clear thought bubble after a duration
+        if (thoughtTimer != null) {
+            thoughtTimer.cancel();
+        }
+
+        thoughtTimer = new Timer();
+        thoughtTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                thoughtText = "";
+                repaint(); // Redraw to remove text
+            }
+        }, durationInSeconds * 1000);
+    }
+
     //import and load sprites images
     private void importImage(){
-        InputStream imageInputStream = getClass().getResourceAsStream("/res/AllCats.png");
+        InputStream imageInputStream = getClass().getResourceAsStream("/images/AllCats.png");
 
         if (imageInputStream == null) {
             System.err.println("Error: Image file 'AllCats.png' not found.");

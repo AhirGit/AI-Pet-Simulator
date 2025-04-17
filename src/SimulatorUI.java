@@ -1,11 +1,15 @@
 package src;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+
 import javax.swing.text.AttributeSet;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +21,7 @@ public class SimulatorUI {
     private SimulatorPanel graphicsPanel;
     private JPanel userInputPanel;
     private String userInputString = ""; // Store user input
+    private JLabel petStatusLabel; //Store pet status
     private final Object inputLock = new Object(); // Lock for waiting thread
 
     public SimulatorUI(SimulatorPanel graphicsPanel){
@@ -24,11 +29,23 @@ public class SimulatorUI {
 
         graphicsPanel.setLayout(new BorderLayout()); // Layout for proper alignment
         handleUserInputBar();
+        handleStatusLabel();
     }
 
     public void showUI(){
         // Add the text field to the panel
         graphicsPanel.add(userInputPanel, BorderLayout.SOUTH); //add component to the graphics panel
+    }
+
+    private void handleStatusLabel(){
+        petStatusLabel = new JLabel("Mood: -- | Hunger: --");
+        petStatusLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20)); // 🔠 Make text bigger
+        petStatusLabel.setForeground(Color.BLUE);
+        graphicsPanel.add(petStatusLabel, BorderLayout.NORTH);
+    }
+
+    public void updateCatStatus(int mood, int hunger, int energy) {
+        petStatusLabel.setText("Mood: " + mood + " | Hunger: " + hunger + " | Energy: " + energy);
     }
 
     //handles the user input bar

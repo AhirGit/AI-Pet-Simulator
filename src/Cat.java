@@ -4,10 +4,13 @@ import static src.Constants.CatConstants.*;
 
 class Cat extends Pet{
     private SimulatorAnimation catAnimation;
+    private SimulatorUI catUI;
 
-    public Cat(String name, SimulatorAnimation catAnimation) {
+    public Cat(String name, SimulatorAnimation catAnimation, SimulatorUI catUI) {
         super(name);
         this.catAnimation = catAnimation;
+        this.catUI = catUI;
+        catUI.updateCatStatus(mood, hunger, energy);
     }
 
     //handles commands and generates cat response
@@ -53,15 +56,23 @@ class Cat extends Pet{
 
 
     private void eat() {
-        if (hunger > 2) 
+        if (hunger > 20) 
         {
-            hunger -= 2;
-            mood += 1;
-            System.out.println(name + " eats happily! 😸 (Hunger: " + hunger + ", Mood: " + mood + ")");
+            hunger -= 30; // Big meal
+            hunger = Math.max(0, hunger);
+
+            mood += 15;
+            mood = Math.min(100, mood);
+
+            energy -= 5;
+            energy = Math.max(0, energy);
+            //System.out.println(name + " eats happily! 😸 (Hunger: " + hunger + ", Mood: " + mood + ")");
 
             catAnimation.setAnimation(EAT);
             catAnimation.resetAnimationTimer(10);
             catAnimation.setThought("Nom nom num 🍖🍖🍖", 10);
+
+            catUI.updateCatStatus(mood, hunger, energy);
         } else {
             System.out.println(name + " is full and refuses to eat more. 😼");
             catAnimation.setThought(name + " is full and refuses to eat more. 😼", 10);
@@ -69,12 +80,18 @@ class Cat extends Pet{
     }
 
     private void sleep() {
-        if (mood < 8) 
+        if (energy < 80) 
         {
-            mood += 2;
-            hunger += 3;
-            System.out.println(name + " takes a cozy nap. 💤 (Hunger: " + hunger + ", Mood: " + mood + ")");
+            energy += 30;
+            energy = Math.min(100, energy);
 
+            mood += 10;
+            mood = Math.min(100, mood);
+
+            hunger += 20;
+            hunger = Math.min(100, hunger);
+            //System.out.println(name + " takes a cozy nap. 💤 (Hunger: " + hunger + ", Mood: " + mood + ")");
+            catUI.updateCatStatus(mood, hunger, energy);
             catAnimation.setAnimation(SLEEP);
             catAnimation.resetAnimationTimer(20);
             catAnimation.setThought(name + " takes a cozy nap. 💤", 10);
@@ -86,30 +103,50 @@ class Cat extends Pet{
     }
 
     private void play() {
-        if (mood > 3 && hunger < 8) 
+        if (hunger < 70 && energy > 20 && shouldListen()) 
         {
-            mood -= 2;
-            hunger += 2;
-            System.out.println(name + " chases a toy mouse! 🐭 (Hunger: " + hunger + ", Mood: " + mood + ")");
+            mood += 15;
+            mood = Math.min(100, mood);
 
+            hunger += 15;
+            hunger = Math.min(100, hunger);
+
+            energy -= 20;
+            energy = Math.max(0, energy);
+
+            //System.out.println(name + " chases a toy mouse! 🐭 (Hunger: " + hunger + ", Mood: " + mood + ")");
+            catUI.updateCatStatus(mood, hunger, energy);
             catAnimation.setAnimation(DANCE);
+            catAnimation.resetAnimationTimer(7);
+            catAnimation.setThought("😻😻",10);
         } else {
             System.out.println(name + " is too tired or hungry to play. 😿");
+            catAnimation.setAnimation(SAD);
+            catAnimation.resetAnimationTimer(100);
+            catAnimation.setThought(name + " is too tired or hungry to play. 😿", 5);
         }
     }
 
     private void sit() {
 
-        if (mood > 3 && hunger < 8) 
+        if (mood > 10 && hunger < 90 && energy > 10 && shouldListen()) 
         {
-            mood -= 3;
-            hunger += 1;
-            System.out.println(name + " sits patiently (Hunger: " + hunger + ", Mood: " + mood + ")");
+            mood -= 5;
+            hunger += 5;
+            energy -= 5;
 
+            mood = Math.max(0, mood);
+            hunger = Math.min(100, hunger);
+            energy = Math.max(0, energy);
+            //System.out.println(name + " sits patiently (Hunger: " + hunger + ", Mood: " + mood + ")");
+
+            catUI.updateCatStatus(mood, hunger, energy);
             catAnimation.setAnimation(SIT);
             catAnimation.resetAnimationTimer(10);
+            catAnimation.setThought("......",10);
         } else {
             System.out.println(name + " is too tired or hungry to listen to you. 😿");
+            catAnimation.setThought(name + " Ignores You!", 5);
         }
     }
 }

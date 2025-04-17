@@ -12,18 +12,18 @@ public class CatSimulator{
     public static void main(String[] args) {
 
         handleGraphics();
-        handleCommands(animation);
+        handleCommands(animation, graphicsPanelUI);
 
     }
 
-    private static void handleCommands(SimulatorAnimation petAnimation){
+    private static void handleCommands(SimulatorAnimation petAnimation, SimulatorUI petUI){
         CommandDetectionBot bot = new CommandDetectionBot();
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter your cat's name: ");
         //String catName = scanner.nextLine();
         String catName = "Bella";
-        Cat myCat = new Cat(catName, petAnimation);
+        Cat myCat = new Cat(catName, petAnimation, petUI);
 
         System.out.println("💬 Type a command (or 'exit' to quit):");
         while (true) {
